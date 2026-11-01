@@ -11,7 +11,7 @@ A small native macOS app that toggles the system's **Natural scrolling** setting
 - One app switches Natural scrolling both on and off.
 - The setting applies to both the mouse and trackpad.
 - A rounded status message appears for about 1.2 seconds, then the app exits.
-- Both the default and dark app icons use blue arrows on black, so the Dock keeps the dark icon even when macOS selects the default icon style. The legacy icon also uses the same black background.
+- The native icon provides blue arrows on white for light appearance and blue arrows on black for dark appearance. macOS selects the icon variant even while the app is not running.
 - No background watcher, login item, Bluetooth monitoring, network requests, analytics, or account requirement.
 
 The current app interface uses Traditional Chinese. The application name is **自然捲動切換**.
@@ -45,6 +45,12 @@ The build uses an ad-hoc local signature. An Apple Developer account is not requ
 
 The process exists briefly while handling a click and displaying the result. It does not stay running between uses. macOS continues to manage the Dock icon normally.
 
+### Sync the Dock icon with system appearance
+
+On macOS versions with an **Icon & widget style** setting, open **System Settings → Appearance**, choose **Dark** under **Icon & widget style**, then select **Auto**. This lets macOS select the white or black icon according to system appearance without a resident app process.
+
+This is a **system-wide** setting: other compatible app icons and widgets will also follow system appearance. The separate **Default** icon style can keep using the white/default icon even when windows and menus are dark. The app does not silently change this preference.
+
 To read the current setting without changing it:
 
 ```zsh
@@ -64,7 +70,7 @@ This is a **private system API** and can change in a future macOS release. If th
 ```text
 src/ScrollToggle.swift        Application and rounded status message
 src/MakeIcon.swift            Legacy icon generation
-assets/ScrollToggle.icon/    Native default and dark icon artwork
+assets/ScrollToggle.icon/    Native light and dark icon artwork
 build.sh                     Local build and ad-hoc signing
 ```
 
@@ -78,7 +84,7 @@ Generated apps, build output, logs, local configuration, and credentials are exc
 
 - 一个程序即可切换开启和关闭，同时影响鼠标与触控板。
 - 使用圆角状态提示框。
-- 默认图标和深色图标均为黑底蓝箭头，即使 macOS 使用默认图标样式，Dock 也能显示黑底图标；传统图标同样采用黑色背景。
+- 原生图标提供浅色白底蓝箭头、深色黑底蓝箭头两个版本，即使程序退出，也可以由 macOS 选择对应版本。
 - 没有后台监测、登录自启、蓝牙监控、网络请求、数据统计或账号要求。
 - 当前程序界面使用繁体中文，README 提供英文和简体中文说明。
 
@@ -93,6 +99,12 @@ Generated apps, build output, logs, local configuration, and credentials are exc
 生成的程序位于 `work/build/自然捲動切換.app`。将它移动到应用程序文件夹，再拖入 Dock 即可使用。程序只在点击时短暂运行，两次使用之间不会常驻。
 
 本机构建采用临时本地签名，不需要 Apple 开发者账号；本仓库不提供经过 Apple 公证的安装包。
+
+### 让 Dock 图标跟随系统
+
+在提供“图标与小组件样式”设置的 macOS 上，打开“系统设置 → 外观”，将图标与小组件样式选择为“深色”，再选择“自动”。macOS 就会根据系统外观切换白底或黑底图标，不需要程序常驻。
+
+这是一个**系统全局设置**，其他支持的应用图标与小组件也会随系统切换。“默认”图标样式与窗口、菜单的深浅色外观是独立的，可能在深色外观下继续显示白底默认图标。程序不会擅自修改这个系统设置。
 
 ### 兼容性
 

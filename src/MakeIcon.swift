@@ -18,7 +18,7 @@ for (size, name) in icons {
     scale.scale(by: CGFloat(size) / 1024)
     scale.concat()
     let tile = NSBezierPath(roundedRect: NSRect(x: 80, y: 80, width: 864, height: 864), xRadius: 192, yRadius: 192)
-    NSColor.black.setFill()
+    NSColor.white.setFill()
     tile.fill()
     NSColor(srgbRed: 10 / 255, green: 132 / 255, blue: 1, alpha: 1).setStroke()
     let arrows = NSBezierPath()
