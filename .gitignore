@@ -1,0 +1,14 @@
+.DS_Store
+/work/
+/build/
+/outputs/
+*.app/
+*.dSYM/
+*.zip
+*.log
+.env
+.env.*
+*.key
+*.p12
+*.mobileprovision
+xcuserdata/
