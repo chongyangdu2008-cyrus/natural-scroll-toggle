@@ -11,7 +11,7 @@ A small native macOS app that toggles the system's **Natural scrolling** setting
 - One app switches Natural scrolling both on and off.
 - The setting applies to both the mouse and trackpad.
 - A rounded status message appears for about 1.2 seconds, then the app exits.
-- Native app icons use blue arrows on white in light appearance and blue arrows on black in dark appearance. macOS controls which icon appearance is displayed.
+- Both the default and dark app icons use blue arrows on black, so the Dock keeps the dark icon even when macOS selects the default icon style. The legacy icon also uses the same black background.
 - No background watcher, login item, Bluetooth monitoring, network requests, analytics, or account requirement.
 
 The current app interface uses Traditional Chinese. The application name is **自然捲動切換**.
@@ -64,7 +64,7 @@ This is a **private system API** and can change in a future macOS release. If th
 ```text
 src/ScrollToggle.swift        Application and rounded status message
 src/MakeIcon.swift            Legacy icon generation
-assets/ScrollToggle.icon/    Native light and dark icon artwork
+assets/ScrollToggle.icon/    Native default and dark icon artwork
 build.sh                     Local build and ad-hoc signing
 ```
 
@@ -78,7 +78,7 @@ Generated apps, build output, logs, local configuration, and credentials are exc
 
 - 一个程序即可切换开启和关闭，同时影响鼠标与触控板。
 - 使用圆角状态提示框。
-- 浅色图标为白底蓝箭头，深色图标为黑底蓝箭头；显示哪个版本由 macOS 的图标外观设置决定。
+- 默认图标和深色图标均为黑底蓝箭头，即使 macOS 使用默认图标样式，Dock 也能显示黑底图标；传统图标同样采用黑色背景。
 - 没有后台监测、登录自启、蓝牙监控、网络请求、数据统计或账号要求。
 - 当前程序界面使用繁体中文，README 提供英文和简体中文说明。
 
@@ -98,4 +98,4 @@ Generated apps, build output, logs, local configuration, and credentials are exc
 
 程序通过修改系统全局自然滚动偏好，并调用 macOS 内置 `PreferencePanesSupport` 框架的私有接口立即应用设置。系统更新可能改变该接口；如果接口不存在，程序会在写入前报错。
 
-构建中声明的最低系统版本为 macOS 13，但这不代表所有系统版本都已验证。深浅色图标的显示也取决于系统版本和图标外观设置。程序不会分别控制鼠标和触控板的滚动方向。
+构建中声明的最低系统版本为 macOS 13，但这不代表所有系统版本都已验证。图标最终显示效果也取决于系统版本和图标外观设置。程序不会分别控制鼠标和触控板的滚动方向。
