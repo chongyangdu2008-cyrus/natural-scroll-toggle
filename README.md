@@ -11,10 +11,12 @@ A small native macOS app that toggles the system's **Natural scrolling** setting
 - One app switches Natural scrolling both on and off.
 - The setting applies to both the mouse and trackpad.
 - A rounded status message appears for about 1.2 seconds, then the app exits.
-- The native icon provides blue arrows on white for light appearance and blue arrows on black for dark appearance. macOS selects the icon variant even while the app is not running.
+- The native icon provides blue arrows on white for light appearance and Apple's **System Dark** background gradient for dark appearance. The dark background uses the system-provided preset rather than pure black or a hard-coded gray. macOS selects the icon variant even while the app is not running.
 - No background watcher, login item, Bluetooth monitoring, network requests, analytics, or account requirement.
 
 The current app interface uses Traditional Chinese. The application name is **自然捲動切換**.
+
+The dark background follows Apple's native System Dark preset. Apple recommends its system gradients over pure black or white icon backgrounds in the [app icon design session](https://developer.apple.com/videos/play/wwdc2025/220/).
 
 ### Build
 
@@ -47,7 +49,7 @@ The process exists briefly while handling a click and displaying the result. It 
 
 ### Sync the Dock icon with system appearance
 
-On macOS versions with an **Icon & widget style** setting, open **System Settings → Appearance**, choose **Dark** under **Icon & widget style**, then select **Auto**. This lets macOS select the white or black icon according to system appearance without a resident app process.
+On macOS versions with an **Icon & widget style** setting, open **System Settings → Appearance**, choose **Dark** under **Icon & widget style**, then select **Auto**. This lets macOS select the light or dark icon according to system appearance without a resident app process.
 
 This is a **system-wide** setting: other compatible app icons and widgets will also follow system appearance. The separate **Default** icon style can keep using the white/default icon even when windows and menus are dark. The app does not silently change this preference.
 
@@ -84,7 +86,7 @@ Generated apps, build output, logs, local configuration, and credentials are exc
 
 - 一个程序即可切换开启和关闭，同时影响鼠标与触控板。
 - 使用圆角状态提示框。
-- 原生图标提供浅色白底蓝箭头、深色黑底蓝箭头两个版本，即使程序退出，也可以由 macOS 选择对应版本。
+- 原生图标提供浅色白底蓝箭头，以及采用 Apple **System Dark** 系统渐变背景的深色版本。深色背景使用系统预设，不使用纯黑或固定的灰色值；即使程序退出，也可以由 macOS 选择对应版本。
 - 没有后台监测、登录自启、蓝牙监控、网络请求、数据统计或账号要求。
 - 当前程序界面使用繁体中文，README 提供英文和简体中文说明。
 
@@ -102,7 +104,7 @@ Generated apps, build output, logs, local configuration, and credentials are exc
 
 ### 让 Dock 图标跟随系统
 
-在提供“图标与小组件样式”设置的 macOS 上，打开“系统设置 → 外观”，将图标与小组件样式选择为“深色”，再选择“自动”。macOS 就会根据系统外观切换白底或黑底图标，不需要程序常驻。
+在提供“图标与小组件样式”设置的 macOS 上，打开“系统设置 → 外观”，将图标与小组件样式选择为“深色”，再选择“自动”。macOS 就会根据系统外观切换浅色或深色图标，不需要程序常驻。
 
 这是一个**系统全局设置**，其他支持的应用图标与小组件也会随系统切换。“默认”图标样式与窗口、菜单的深浅色外观是独立的，可能在深色外观下继续显示白底默认图标。程序不会擅自修改这个系统设置。
 
