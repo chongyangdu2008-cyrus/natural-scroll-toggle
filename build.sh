@@ -6,10 +6,10 @@ app_path="$build_dir/自然捲動切換.app"
 mkdir -p "$app_path/Contents/MacOS" "$app_path/Contents/Resources"
 swiftc -swift-version 5 -O src/ScrollToggle.swift -o "$app_path/Contents/MacOS/scroll-toggle" -framework AppKit
 swift src/MakeIcon.swift "$build_dir/ScrollToggle.iconset"
-iconutil -c icns "$build_dir/ScrollToggle.iconset" -o "$app_path/Contents/Resources/ScrollToggle.icns"
-xcrun actool assets/ScrollToggle.icon --compile "$app_path/Contents/Resources" \
+iconutil -c icns "$build_dir/ScrollToggle.iconset" -o "$app_path/Contents/Resources/ScrollToggleAppearance.icns"
+xcrun actool assets/ScrollToggleAppearance.icon --compile "$app_path/Contents/Resources" \
   --platform macosx --minimum-deployment-target 13.0 --target-device mac \
-  --app-icon ScrollToggle --output-partial-info-plist "$build_dir/icon-info.plist" \
+  --app-icon ScrollToggleAppearance --output-partial-info-plist "$build_dir/icon-info.plist" \
   --output-format human-readable-text
 python3 - "$app_path" <<'PY'
 import pathlib,plistlib,sys
@@ -20,10 +20,10 @@ info={
     'CFBundleDisplayName':'自然捲動切換',
     'CFBundleExecutable':'scroll-toggle',
     'CFBundlePackageType':'APPL',
-    'CFBundleVersion':'5',
-    'CFBundleShortVersionString':'1.4',
-    'CFBundleIconFile':'ScrollToggle.icns',
-    'CFBundleIconName':'ScrollToggle',
+    'CFBundleVersion':'6',
+    'CFBundleShortVersionString':'1.5',
+    'CFBundleIconFile':'ScrollToggleAppearance.icns',
+    'CFBundleIconName':'ScrollToggleAppearance',
     'LSMinimumSystemVersion':'13.0',
     'LSUIElement':True,
     'NSHighResolutionCapable':True,

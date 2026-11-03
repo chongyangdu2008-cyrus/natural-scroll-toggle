@@ -70,10 +70,10 @@ This is a **private system API** and can change in a future macOS release. If th
 ### Source layout
 
 ```text
-src/ScrollToggle.swift        Application and rounded status message
-src/MakeIcon.swift            Legacy icon generation
-assets/ScrollToggle.icon/    Native light and dark icon artwork
-build.sh                     Local build and ad-hoc signing
+src/ScrollToggle.swift              Application and rounded status message
+src/MakeIcon.swift                  Legacy icon generation
+assets/ScrollToggleAppearance.icon/  Native light and dark icon artwork
+build.sh                            Local build and ad-hoc signing
 ```
 
 Generated apps, build output, logs, local configuration, and credentials are excluded from version control.
